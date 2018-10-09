@@ -1,0 +1,35 @@
+{
+  "name": "to-do-sample",
+  "version": "1.0.0",
+  "description": "Sample working with React, Typescript, Tests etc.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --mode development --inline --hot --open",
+    "build": "webpack  --mode development"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/mini-css-extract-plugin": "^0.2.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^0.28.11",
+    "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.4.0",
+    "style-loader": "^0.21.0",
+    "ts-loader": "^5.2.1",
+    "typescript": "^2.8.3",
+    "url-loader": "^1.0.1",
+    "webpack": "^4.8.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.9"
+  },
+  "dependencies": {
+    "@types/react": "^16.4.16",
+    "@types/react-dom": "^16.0.9",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
+  }
+}

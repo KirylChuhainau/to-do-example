@@ -1,0 +1,14 @@
+@import '../../styles/util/colors';
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  height: 10vh;
+  background-color: $main-color;
+}
+
+.header__text {
+  color: white;
+}

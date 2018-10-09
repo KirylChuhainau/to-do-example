@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "es6",
     "module": "es6",
+    "baseUrl": "./src",
     "moduleResolution": "node",
     "declaration": false,
     "noImplicitAny": false,

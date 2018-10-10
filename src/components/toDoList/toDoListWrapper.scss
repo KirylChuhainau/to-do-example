@@ -1,0 +1,14 @@
+@import '../../styles/util/colors';
+
+.to-do-list-wrapper{
+  width: 50vw;
+  border: 2px solid $main-color;
+
+  @media only screen and (max-width: 768px){
+    width: 70vw;
+  }
+
+  @media only screen and (max-width: 425px){
+    width: 100%;
+  }
+}

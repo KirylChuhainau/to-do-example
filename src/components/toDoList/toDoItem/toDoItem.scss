@@ -1,0 +1,54 @@
+@import '../../../styles/util/colors';
+
+.to-do-item {
+  display: flex;
+  align-items: center;
+
+  height: 2.2em;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.to-do-item__checkbox {
+  visibility: hidden;
+  width: 0;
+  position: relative;
+}
+
+.to-do-item__label {
+  cursor: pointer;
+  position: relative;
+  width: 25px;
+  height: 25px;
+  background: #eee;
+  border:1px solid $main-color;
+  flex-shrink: 0;
+
+  &::after {
+    content: '';
+    opacity: 0.2;
+    position: absolute;
+    width: 9px;
+    height: 5px;
+    background: transparent;
+    top: 6px;
+    left: 7px;
+    border: 3px solid $main-color;
+    border-top: none;
+    border-right: none;
+
+    transform: rotate(-45deg);
+  }
+}
+
+.to-do-item__checkbox:checked + .to-do-item__label::after {
+  opacity: 1;
+}
+
+.to-do-item__checkbox:checked ~ .to-do-item__text {
+  text-decoration: line-through;
+}
+
+.to-do-item__text {
+  margin-left: .5em;
+}

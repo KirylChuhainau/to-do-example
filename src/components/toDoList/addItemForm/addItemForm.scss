@@ -1,0 +1,28 @@
+.to-do-list-wrapper__add-item-form {
+  height: 10%;
+  padding: 1em 2em;
+  font-size: 16px;
+
+  @media only screen and (max-width: 425px){
+    padding: 1em 1em;
+  }
+}
+
+.add-item-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-item-form__input {
+  width: 80%;
+  padding: .5em;
+  font-size: 16px;
+}
+
+.add-item-form__submit {
+  width: 20%;
+  margin-left: 1.5em;
+  padding: .5em;
+  font-size: 16px;
+}

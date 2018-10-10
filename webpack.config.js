@@ -8,6 +8,7 @@ var basePath = __dirname;
 module.exports = {
   context: path.join(basePath, 'src'),
   resolve: {
+    modules: [path.resolve('./src'), 'node_modules'],
     extensions: ['.js', '.ts', '.tsx']
   },
   entry: {
@@ -24,8 +25,8 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'ts-loader'
       }, {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"]
+        test: /\.(s*)css$/,
+        use: ['style-loader', "css-loader", 'sass-loader']
       }, {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',

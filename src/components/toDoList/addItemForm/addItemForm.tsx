@@ -13,11 +13,12 @@ class AddItemForm extends React.Component<Props> {
   private _onSubmitHandler = (e) => {
     e.preventDefault();
     this.props.onSubmit(this._textInput.current.value);
+    this._textInput.current.value = '';
   }
 
   public render() {
     return (
-      <form className="add-item-form" onSubmit={this._onSubmitHandler}>
+      <form className="add-item-form to-do-list-wrapper__add-item-form" onSubmit={this._onSubmitHandler}>
         <input 
           type='text' 
           name='newItemInput' 
@@ -30,7 +31,7 @@ class AddItemForm extends React.Component<Props> {
           type='submit'
           className='add-item-form__submit'
           tabIndex={0}  
-        > Add item </button>
+        > Add </button>
       </form>
     )
   };

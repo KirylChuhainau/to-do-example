@@ -1,0 +1,13 @@
+.to-do-list-wrapper__to-do-list {
+  margin: 0 3%;
+  list-style: none;
+}
+
+.to-do-list {
+  display: flex;
+  flex-direction: column;
+
+  padding: 0;
+  height: 80%;
+  overflow-y: scroll;
+}

@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-import ToDoList from 'components/toDoList/toDoList';
+import ToDoListWrapper from 'components/toDoList/toDoListWrapper';
 
 import './mainPage.scss';
 
 const MainPage: React.StatelessComponent<{}> = () => {
   return (
     <main className="main-page">
-      <ToDoList/>
+      <ToDoListWrapper/>
     </main>
   );
 }

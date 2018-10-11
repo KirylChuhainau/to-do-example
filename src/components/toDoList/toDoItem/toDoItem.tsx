@@ -6,41 +6,49 @@ import './toDoItem.scss';
 
 interface Props {
   toDoItem: ToDoItemEntity;
-}
+  onStatusChanged(id: number): void;
+  onRemove(id: number): void;
+};
 
-interface State {
-  isDone: boolean;
-}
+class ToDoItem extends React.Component<Props> {
+  private _onChangeHandler = (e) => {
+    const { onStatusChanged, toDoItem } = this.props;
 
-class ToDoItem extends React.Component<Props, State> {
-  constructor(props) {
-    super(props);
-    this.state = { isDone: props.toDoItem.isDone };
+    onStatusChanged(toDoItem.id);
   }
 
-  private _onChangeHandler = (e) => {
-    this.setState((prevState) => ({
-      isDone: !prevState.isDone
-    }));
+  private _onRemoveClickHandler = (e) => {
+    const { onRemove, toDoItem } = this.props;
+
+    onRemove(toDoItem.id);
   }
   
   public render() {
+    const { isDone, id, text } = this.props.toDoItem;
+
     return (
-      <li className="to-do-list__to-do-item to-do-item">
+      <li className='to-do-list__to-do-item to-do-item'>
         <input
           type='checkbox'
-          id={this.props.toDoItem.id.toString()}
-          checked={this.state.isDone}
-          onChange={this._onChangeHandler}
-          className="to-do-item__checkbox"
+          id={ id.toString() }
+          checked={ isDone }
+          onChange={ this._onChangeHandler }
+          className='to-do-item__checkbox'
           />
         <label 
-          htmlFor={this.props.toDoItem.id.toString()}
-          className="to-do-item__label"
+          htmlFor={ id.toString() }
+          className='to-do-item__label'
         />
-        <p className="to-do-item__text">
-          {this.props.toDoItem.text}
+        <p className='to-do-item__text'>
+          { text }
         </p>
+        <button 
+          className='to-do-item__remove-button' 
+          aria-label={`Remove item with text: ${text}`}
+          onClick={this._onRemoveClickHandler}
+        >
+          x
+        </button>
       </li>
     );
   }

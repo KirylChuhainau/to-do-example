@@ -1,57 +1,65 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import AddItemForm from './addItemForm/addItemForm';
 import ToDoList from './toDoList/toDoList';
-import {ToDoItemEntity} from 'model/toDoItemEntity';
-import {getId} from 'services/idService';
+import { ToDoItemEntity } from 'model/toDoItemType';
+import { State } from 'model/reduxTypes';
+import { addItem, changeStatus, removeItem } from 'actions/toDoActions';
 
 import './toDoListWrapper.scss';
 
-const fakeData = [
-  {
-    id: 1,
-    text: 'do it',
-    isDone: true
-  },
-  {
-    id: 2,
-    text: 'Buy the car',
-    isDone: false
-  },
-]
-
-interface State {
+interface StateProps {
   toDoItems: ToDoItemEntity[];
-}
+};
 
-class ToDoListWrapper extends React.Component<{}, State> {
-  constructor(props) {
-    super(props);
-    this.state = {toDoItems: fakeData};
-  }
-  
+interface DispatchProps {
+  addItem(text: string): void;
+  changeStatus(id: number): void;
+  removeItem(id: number): void;
+};
+
+type Props = StateProps & DispatchProps;
+
+class ToDoListWrapper extends React.Component<Props> {
   private _addNewItem = (text: string) => {
-    this.setState((prevState) => {
-      const newItem:ToDoItemEntity = {
-        id: getId(),
-        text: text,
-        isDone: false
-      };
+    this.props.addItem(text);
+  }
 
-      return {
-        toDoItems: [...prevState.toDoItems, newItem]
-      };
-    });
+  private _onItemStatusChanged = (id: number) => {
+    this.props.changeStatus(id);
+  }
+
+  private _onItemRemoved = (id: number) => {
+    this.props.removeItem(id);
   }
 
   public render() {
     return (
       <div className="to-do-list-wrapper">
-        <AddItemForm onSubmit={this._addNewItem}/>
-        <ToDoList toDoItems={this.state.toDoItems} />
+        <AddItemForm onSubmit={ this._addNewItem }/>
+        <ToDoList 
+          toDoItems={ this.props.toDoItems }
+          onItemStatusChanged={ this._onItemStatusChanged }
+          onItemRemoved={ this._onItemRemoved }
+        />
       </div>
-    )
-  };
-}
+    );
+  }
+};
 
-export default ToDoListWrapper;
+const mapStateToProps = (state: State): StateProps => ({
+  toDoItems: state.toDoList
+});
+
+const mapDispatchToProps = (dispatch) => bindActionCreators(
+  {
+    addItem,
+    changeStatus,
+    removeItem
+  },
+  dispatch
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(ToDoListWrapper);

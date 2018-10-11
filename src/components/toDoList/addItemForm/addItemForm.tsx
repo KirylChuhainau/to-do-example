@@ -6,7 +6,7 @@ interface Props {
   onSubmit(text:string): void
 }
 
-class AddItemForm extends React.Component<Props> {
+class AddItemForm extends React.PureComponent<Props> {
 
   private _textInput = React.createRef<HTMLInputElement>();
 
@@ -25,6 +25,7 @@ class AddItemForm extends React.Component<Props> {
           placeholder='Type text here' 
           className='add-item-form__input'
           ref={this._textInput}
+          required={true}
           tabIndex={0}
         />
         <button 

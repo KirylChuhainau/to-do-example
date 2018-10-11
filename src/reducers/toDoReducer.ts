@@ -13,17 +13,17 @@ const defaultState: State = {
 const toDoReducer = handleActions (
   {
     [addItem.toString()]: (state: State, action: ToDoActions) => {
-      const newItem:ToDoItemEntity = {
+      const newItem: ToDoItemEntity = {
         id: state.index + 1,
         text: action.payload.text,
         isDone: false
       };
-  
+
       return {
         ...state,
         toDoList: [...state.toDoList, newItem],
         index: state.index + 1
-      }
+      };
     },
     [changeStatus.toString()]: (state: State, action: ToDoActions) => {
       const newToDo = state.toDoList.map((toDoItem: ToDoItemEntity) => {
@@ -35,7 +35,7 @@ const toDoReducer = handleActions (
         }
         return toDoItem;
       });
-  
+
       return {
         ...state,
         toDoList: newToDo

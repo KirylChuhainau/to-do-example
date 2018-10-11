@@ -1,4 +1,4 @@
-export type ToDoItemEntity = {
+export interface ToDoItemEntity {
   id: number;
   isDone: boolean;
   text: string;

@@ -9,13 +9,13 @@ import './styles/app.scss';
 
 const App: React.StatelessComponent<{}> = () => {
   return (
-    <Provider store={ store }>
-      <div className="container-fluid">
+    <Provider store={store}>
+      <div className='container-fluid'>
         <Header/>
         <MainPage/>
       </div>
     </Provider>
   );
-}
+};
 
 export default App;

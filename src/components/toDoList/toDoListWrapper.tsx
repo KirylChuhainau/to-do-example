@@ -1,57 +1,50 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import AddItemForm from './addItemForm/addItemForm';
 import ToDoList from './toDoList/toDoList';
-import {ToDoItemEntity} from 'model/toDoItemEntity';
-import {getId} from 'services/idService';
+import { ToDoItemEntity } from 'model/toDoItemType';
+import { getId } from 'services/idService';
+import { State } from 'model/reduxTypes';
+import { addItem } from 'actions/toDoActions';
 
 import './toDoListWrapper.scss';
 
-const fakeData = [
-  {
-    id: 1,
-    text: 'do it',
-    isDone: true
-  },
-  {
-    id: 2,
-    text: 'Buy the car',
-    isDone: false
-  },
-]
-
-interface State {
+interface StateProps {
   toDoItems: ToDoItemEntity[];
-}
+};
 
-class ToDoListWrapper extends React.Component<{}, State> {
-  constructor(props) {
-    super(props);
-    this.state = {toDoItems: fakeData};
-  }
-  
+interface DispatchProps {
+  addItem(text: string): void;
+};
+
+type Props = StateProps & DispatchProps;
+
+class ToDoListWrapper extends React.Component<Props> {
   private _addNewItem = (text: string) => {
-    this.setState((prevState) => {
-      const newItem:ToDoItemEntity = {
-        id: getId(),
-        text: text,
-        isDone: false
-      };
-
-      return {
-        toDoItems: [...prevState.toDoItems, newItem]
-      };
-    });
+    this.props.addItem(text);
   }
 
   public render() {
     return (
       <div className="to-do-list-wrapper">
         <AddItemForm onSubmit={this._addNewItem}/>
-        <ToDoList toDoItems={this.state.toDoItems} />
+        <ToDoList toDoItems={this.props.toDoItems} />
       </div>
-    )
-  };
-}
+    );
+  }
+};
 
-export default ToDoListWrapper;
+const mapStateToProps = (state: State): StateProps => ({
+  toDoItems: state.toDoList
+});
+
+const mapDispatchToProps = (dispatch) => bindActionCreators(
+  {
+    addItem
+  }, 
+  dispatch
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(ToDoListWrapper);

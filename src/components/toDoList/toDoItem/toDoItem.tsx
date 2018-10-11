@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import {ToDoItemEntity} from 'model/toDoItemEntity';
+import {ToDoItemEntity} from 'model/toDoItemType';
 
 import './toDoItem.scss';
 

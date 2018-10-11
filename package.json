@@ -8,10 +8,11 @@
     "start": "webpack-dev-server --mode development --inline --hot --open",
     "build": "webpack  --mode development"
   },
-  "author": "",
+  "author": "KirylChuhainau",
   "license": "MIT",
   "devDependencies": {
     "@types/mini-css-extract-plugin": "^0.2.0",
+    "@types/react-redux": "^6.0.9",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
     "css-loader": "^1.0.0",
@@ -23,6 +24,7 @@
     "style-loader": "^0.21.0",
     "ts-loader": "^5.2.1",
     "tslint": "^5.11.0",
+    "tslint-react": "^3.6.0",
     "typescript": "^2.8.3",
     "url-loader": "^1.0.1",
     "webpack": "^4.8.1",
@@ -32,7 +34,11 @@
   "dependencies": {
     "@types/react": "^16.4.16",
     "@types/react-dom": "^16.0.9",
+    "@types/redux-actions": "^2.3.1",
     "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "react-dom": "^16.5.2",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
+    "redux-actions": "^2.6.1"
   }
 }

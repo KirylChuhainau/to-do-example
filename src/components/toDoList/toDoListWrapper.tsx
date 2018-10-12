@@ -53,7 +53,7 @@ const mapStateToProps = (state: State): StateProps => ({
   toDoItems: state.toDoList
 });
 
-const mapDispatchToProps = (dispatch) => bindActionCreators(
+const mapDispatchToProps = (dispatch): DispatchProps => bindActionCreators(
   {
     addItem,
     changeStatus,

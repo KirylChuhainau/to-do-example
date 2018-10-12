@@ -13,7 +13,7 @@ interface Props {
 
 class ToDoList extends React.Component<Props> {
 
-  public render() {
+  public render(): React.ReactNode {
     return (
       <ul className='to-do-list to-do-list-wrapper__to-do-list'>
       {

@@ -2,7 +2,7 @@
   "defaultSeverity": "error",
   "extends": ["tslint:recommended", "tslint-react"],
   "jsRules": {},
-  "rulesDirectory": ["src/"],
+  "rulesDirectory": ["./src/"],
   "rules": {
     "jsx-no-multiline-js": false,
     "ordered-imports": false,

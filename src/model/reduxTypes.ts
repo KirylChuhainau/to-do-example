@@ -8,21 +8,21 @@ export interface State {
 }
 
 export interface AddItemAction extends Action {
-  type: 'ADD_ITEM';
+  type: string;
   payload: {
     text: string;
   };
 }
 
 export interface ChangeStatusAction extends Action {
-  type: 'CHANGE_STATUS';
+  type: string;
   payload: {
     id: number;
   };
 }
 
 export interface RemoveItemAction extends Action {
-  type: 'REMOVE_ITEM';
+  type: string;
   payload: {
     id: number;
   };

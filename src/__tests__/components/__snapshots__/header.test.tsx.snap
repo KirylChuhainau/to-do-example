@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/header tests should render as expected  1`] = `
+<header
+  className="header"
+>
+  <h1
+    className="header__text"
+  >
+    To Do yourself!
+  </h1>
+</header>
+`;

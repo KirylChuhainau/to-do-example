@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import ToDoListWrapper from 'components/toDoList/toDoListWrapper';
+import ToDoListWrapper from 'containers/toDoListWrapper/toDoListWrapper';
 
 import './mainPage.scss';
 

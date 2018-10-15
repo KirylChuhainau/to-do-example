@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/toDoList/toDoItem tests should render as expected  1`] = `
+<li
+  className="to-do-list__to-do-item to-do-item"
+>
+  <input
+    checked={false}
+    className="to-do-item__checkbox"
+    id="0"
+    onChange={[Function]}
+    type="checkbox"
+  />
+  <label
+    className="to-do-item__label"
+    htmlFor="0"
+  />
+  <p
+    className="to-do-item__text"
+  >
+    test text
+  </p>
+  <button
+    aria-label="Remove item with text: test text"
+    className="to-do-item__remove-button"
+    onClick={[Function]}
+  >
+    x
+  </button>
+</li>
+`;

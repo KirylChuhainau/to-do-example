@@ -4,7 +4,7 @@ import {ToDoItemEntity} from 'model/toDoItemType';
 
 import './toDoItem.scss';
 
-interface Props {
+export interface Props {
   toDoItem: ToDoItemEntity;
   onStatusChanged(id: number): void;
   onRemove(id: number): void;

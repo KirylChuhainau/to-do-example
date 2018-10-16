@@ -2,8 +2,8 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import AddItemForm from 'components/toDoList/addItemForm/addItemForm';
-import ToDoList from 'components/toDoList/toDoList/toDoList';
+import AddItemForm from 'components/toDoList/addItemForm';
+import ToDoList from 'components/toDoList/toDoList';
 import { ToDoItemEntity } from 'model/toDoItemType';
 import { State } from 'model/reduxTypes';
 import { addItem, changeStatus, removeItem } from 'actions/toDoActions';

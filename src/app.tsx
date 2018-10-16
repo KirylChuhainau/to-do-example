@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
 
-import Header from 'components/header/header';
-import MainPage from 'pages/mainPage/mainPage';
+import Header from 'components/header';
+import MainPage from 'pages/mainPage';
 import { store } from 'store';
 
 import './styles/app.scss';

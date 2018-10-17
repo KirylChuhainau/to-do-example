@@ -6,7 +6,7 @@ import AddItemForm from 'components/toDoList/addItemForm';
 import ToDoList from 'components/toDoList/toDoList';
 import { ToDoItemEntity } from 'model/toDoItemType';
 import { State } from 'model/reduxTypes';
-import { addItem, changeStatus, removeItem } from 'actions/toDoActions';
+import { addItem, changeStatus, removeItem, loadToDoList } from 'actions/toDoActions';
 
 import './toDoListWrapper.scss';
 
@@ -17,12 +17,17 @@ interface StateProps {
 interface DispatchProps {
   addItem(text: string): void;
   changeStatus(id: number): void;
+  loadToDoList(): void;
   removeItem(id: number): void;
 }
 
 type Props = StateProps & DispatchProps;
 
 class ToDoListWrapper extends React.Component<Props> {
+
+  public componentDidMount(): void {
+    this.props.loadToDoList();
+  }
 
   public render(): React.ReactNode {
     return (
@@ -36,6 +41,7 @@ class ToDoListWrapper extends React.Component<Props> {
       </div>
     );
   }
+
   private _addNewItem = (text: string) => {
     this.props.addItem(text);
   }
@@ -57,6 +63,7 @@ const mapDispatchToProps = (dispatch): DispatchProps => bindActionCreators(
   {
     addItem,
     changeStatus,
+    loadToDoList,
     removeItem
   },
   dispatch

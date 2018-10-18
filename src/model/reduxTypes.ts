@@ -7,25 +7,30 @@ export interface State {
   error: {} | null;
 }
 
-export interface AddItemAction extends Action {
+interface ToDoActionType<P> {
   type: string;
-  payload: {
-    text: string;
-  };
+  payload?: P;
 }
 
-export interface ChangeStatusAction extends Action {
-  type: string;
-  payload: {
-    id: number;
-  };
+export type AddItemAction = ToDoActionType<AddItemPayload>;
+export type ChangeStatusAction = ToDoActionType<ChangeStatusPayload>;
+export type RemoveItemAction = ToDoActionType<RemoveItemPayload>;
+export type SetToDoListAction = ToDoActionType<SetToDoListPayload>;
+
+interface AddItemPayload {
+  text: string;
 }
 
-export interface RemoveItemAction extends Action {
-  type: string;
-  payload: {
-    id: number;
-  };
+interface ChangeStatusPayload {
+  id: number;
 }
 
-export type ToDoActions = AddItemAction & ChangeStatusAction & RemoveItemAction;
+interface RemoveItemPayload {
+  id: number;
+}
+
+interface SetToDoListPayload {
+  toDoList: ToDoItemEntity[];
+}
+
+export type ToDoActionPayload = SetToDoListPayload | RemoveItemPayload | ChangeStatusPayload | AddItemPayload;

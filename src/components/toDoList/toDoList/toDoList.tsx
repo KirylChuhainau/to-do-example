@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import {ToDoItemEntity} from 'model/toDoItemType';
-import ToDoItem from '../toDoItem/toDoItem';
+import ToDoItem from '../toDoItem';
 
 import './toDoList.scss';
 

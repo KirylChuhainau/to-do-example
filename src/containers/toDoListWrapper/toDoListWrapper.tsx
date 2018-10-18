@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { bindActionCreators, Dispatch } from 'redux';
 
-import AddItemForm from 'components/toDoList/addItemForm/addItemForm';
-import ToDoList from 'components/toDoList/toDoList/toDoList';
+import AddItemForm from 'components/toDoList/addItemForm';
+import ToDoList from 'components/toDoList/toDoList';
 import { ToDoItemEntity } from 'model/toDoItemType';
 import { State } from 'model/reduxTypes';
-import { addItem, changeStatus, removeItem } from 'actions/toDoActions';
+import { addItem, changeStatus, removeItem, loadToDoList } from 'actions/toDoActions';
 
 import './toDoListWrapper.scss';
 
@@ -17,12 +17,17 @@ interface StateProps {
 interface DispatchProps {
   addItem(text: string): void;
   changeStatus(id: number): void;
+  loadToDoList(): void;
   removeItem(id: number): void;
 }
 
 type Props = StateProps & DispatchProps;
 
 class ToDoListWrapper extends React.Component<Props> {
+
+  public componentDidMount(): void {
+    this.props.loadToDoList();
+  }
 
   public render(): React.ReactNode {
     return (
@@ -36,6 +41,7 @@ class ToDoListWrapper extends React.Component<Props> {
       </div>
     );
   }
+
   private _addNewItem = (text: string) => {
     this.props.addItem(text);
   }
@@ -53,10 +59,11 @@ const mapStateToProps = (state: State): StateProps => ({
   toDoItems: state.toDoList
 });
 
-const mapDispatchToProps = (dispatch): DispatchProps => bindActionCreators(
+const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => bindActionCreators(
   {
     addItem,
     changeStatus,
+    loadToDoList,
     removeItem
   },
   dispatch

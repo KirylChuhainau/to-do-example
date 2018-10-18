@@ -39,7 +39,11 @@ module.exports = {
         options: {
           name: "assets/img/[name].[ext]?[hash]",
         },
-      },
+      }, {
+        type: 'javascript/auto',
+        test: /\.mjs$/,
+        include: /node_modules/
+      }
     ],
   },
   // For development https://webpack.js.org/configuration/devtool/#for-development

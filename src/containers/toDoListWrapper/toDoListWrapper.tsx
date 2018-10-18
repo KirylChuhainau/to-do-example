@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { bindActionCreators, Dispatch } from 'redux';
 
 import AddItemForm from 'components/toDoList/addItemForm';
 import ToDoList from 'components/toDoList/toDoList';
@@ -59,7 +59,7 @@ const mapStateToProps = (state: State): StateProps => ({
   toDoItems: state.toDoList
 });
 
-const mapDispatchToProps = (dispatch): DispatchProps => bindActionCreators(
+const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => bindActionCreators(
   {
     addItem,
     changeStatus,

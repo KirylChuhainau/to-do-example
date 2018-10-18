@@ -1,7 +1,14 @@
 import { handleActions } from 'redux-actions';
 
-import { addItem, changeStatus, removeItem } from 'actions/toDoActions';
-import { State, ToDoActions } from 'model/reduxTypes';
+import { addItem, changeStatus, removeItem, setToDoList } from 'actions/toDoActions';
+import {
+  State,
+  ToDoActionPayload,
+  AddItemAction,
+  ChangeStatusAction,
+  RemoveItemAction,
+  SetToDoListAction
+} from 'model/reduxTypes';
 import { ToDoItemEntity } from 'model/toDoItemType';
 
 const defaultState: State = {
@@ -10,9 +17,9 @@ const defaultState: State = {
   error: null
 };
 
-const toDoReducer = handleActions (
+const toDoReducer = handleActions<State, ToDoActionPayload> (
   {
-    [addItem.toString()]: (state: State, action: ToDoActions) => {
+    [addItem.toString()]: (state: State, action: AddItemAction) => {
       const newItem: ToDoItemEntity = {
         id: state.index + 1,
         text: action.payload.text,
@@ -25,7 +32,7 @@ const toDoReducer = handleActions (
         index: state.index + 1
       };
     },
-    [changeStatus.toString()]: (state: State, action: ToDoActions) => {
+    [changeStatus.toString()]: (state: State, action: ChangeStatusAction) => {
       const newToDo = state.toDoList.map((toDoItem: ToDoItemEntity) => {
         if (toDoItem.id === action.payload.id) {
           return {
@@ -41,7 +48,13 @@ const toDoReducer = handleActions (
         toDoList: newToDo
       };
     },
-    [removeItem.toString()]: (state: State, action: ToDoActions) => {
+    [setToDoList.toString()]: (state: State, action: SetToDoListAction) => {
+      return {
+        ...state,
+        toDoList: action.payload.toDoList
+      };
+    },
+    [removeItem.toString()]: (state: State, action: RemoveItemAction) => {
       return {
         ...state,
         toDoList: state.toDoList.filter((toDoItem: ToDoItemEntity) => toDoItem.id !== action.payload.id)

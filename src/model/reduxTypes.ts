@@ -1,5 +1,5 @@
 import { ToDoItemEntity } from './toDoItemType';
-import { Action } from 'redux';
+import { Action, ActionCreator } from 'redux';
 
 export interface State {
   toDoList: ToDoItemEntity[];
@@ -34,3 +34,4 @@ interface SetToDoListPayload {
 }
 
 export type ToDoActionPayload = SetToDoListPayload | RemoveItemPayload | ChangeStatusPayload | AddItemPayload;
+export type ToDoAction = AddItemAction | ChangeStatusAction | RemoveItemAction | SetToDoListAction;

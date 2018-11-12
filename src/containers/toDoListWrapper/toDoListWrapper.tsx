@@ -5,7 +5,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 import AddItemForm from 'components/toDoList/addItemForm';
 import ToDoList from 'components/toDoList/toDoList';
 import { ToDoItemEntity } from 'model/toDoItemType';
-import { State } from 'model/reduxTypes';
+import { State, ToDoAction } from 'model/reduxTypes';
 import { addItem, changeStatus, removeItem, loadToDoList } from 'actions/toDoActions';
 
 import './toDoListWrapper.scss';
